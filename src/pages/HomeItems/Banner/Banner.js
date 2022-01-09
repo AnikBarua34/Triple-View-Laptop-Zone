@@ -1,4 +1,7 @@
-import React from 'react';
+
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { Carousel } from 'react-bootstrap';
 import pic1 from '../../../images/banner/bike1.jpg';
 import pic2 from '../../../images/banner/bike2.jpg';
@@ -6,7 +9,16 @@ import pic3 from '../../../images/banner/bike3.jpg';
 import './Banner.css';
 
 const Banner = () => {
+  useEffect(()=>{
+    AOS.init({
+        offset:100,
+        duration:2000,
+        easing:'ease',
+    });
+})
     return (
+      <div data-aos="zoom-in">
+
         <div className="banner mt-3">
             <Carousel>
   <Carousel.Item>
@@ -36,6 +48,7 @@ const Banner = () => {
    
   </Carousel.Item>
 </Carousel>
+        </div>
         </div>
     );
 };

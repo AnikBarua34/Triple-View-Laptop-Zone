@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { Row,Carousel,Card } from 'react-bootstrap';
 import { FaGrinStars} from 'react-icons/fa';
 import Rating from 'react-rating';
@@ -6,6 +8,13 @@ import Rating from 'react-rating';
 
 
 const Reviews = () => {
+    useEffect(()=>{
+        AOS.init({
+            offset:100,
+            duration:2000,
+            easing:'ease',
+        });
+    })
     const [usersReview,setUsersReview] =useState([]);
     useEffect(()=>{
         fetch('https://rocky-mesa-18729.herokuapp.com/getReviews')
@@ -15,13 +24,13 @@ const Reviews = () => {
     },[])
     return (
         <div className="banner mt-3">
-            <h5 className="bg-warning text-dark fw-bold rounded-3 m-4 p-2"><FaGrinStars/> Our Top Clients Says <FaGrinStars/> </h5>
+            <div data-aos="zoom-in"><h5 className="bg-warning text-dark fw-bold rounded-3 m-4 p-2"><FaGrinStars/> Our Top Clients Says <FaGrinStars/> </h5></div>
 
             <Row xs={1} md={3} lg={5} className="g-3 m-3 rounded">
             {
                 usersReview.map(review =><Carousel key={review._id}>
-                    <Carousel.Item>
-                    <Card className="card" border="warning">         
+                  <Carousel.Item>
+                  <div data-aos="flip-left"> <Card className="card" border="warning">         
         <Card.Body style={{height:"250px"}}>
             <Card.Title className="text-light fw-bold bg-success p-2 rounded">{review.userName}</Card.Title>
             <Card.Text className="text-dark fw-bold">{review.description}</Card.Text>
@@ -31,10 +40,10 @@ const Reviews = () => {
            fullSymbol="fas fa-star"
         ></Rating>
         </Card.Body>
-                    </Card>
+                    </Card></div>
                     </Carousel.Item>
                     <Carousel.Item>
-                    <Card className="card" border="warning"> 
+                  <div data-aos="flip-left">  <Card className="card" border="warning"> 
         
       <Card.Body style={{height:"250px"}}>
         <Card.Title className="text-primary fw-bold bg-dark p-2 rounded">{review.userName}</Card.Title>
@@ -46,7 +55,7 @@ const Reviews = () => {
         ></Rating>
     
       </Card.Body>
-      </Card>
+      </Card></div>
                     </Carousel.Item>
                     </Carousel>
                 

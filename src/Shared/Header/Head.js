@@ -1,14 +1,16 @@
 import React from 'react';
+import 'aos/dist/aos.css';
 import { Container, Image, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import useContextBase from '../../pages/hooks/useContextbase';
-import logo from '../../images/logo.png';
 import './Header.css';
 
 const Header = () => {
+ 
   const {user,logOut} =useContextBase();
     return (
+      
         <div>
             <Navbar className="navbar" bg="primary" variant="dark" fixed="top" collapseOnSelect expand="lg">
     <Container  className="">
@@ -45,6 +47,7 @@ const Header = () => {
     </Container>
   </Navbar>
         </div>
+        
     );
 };
 

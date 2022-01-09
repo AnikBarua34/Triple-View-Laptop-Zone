@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { Container, Col, Row } from 'react-bootstrap';
 import {Switch,Route,useRouteMatch,Link} from "react-router-dom";
 import PrivateRoute from '../../AllRoutes/PrivateRoute/PrivateRoute';
@@ -14,11 +16,18 @@ import AdminRoute from './../../AllRoutes/AdminRoute/AdminRoute';
 
 
 const DashboardHomee = () => {
+    useEffect(()=>{
+        AOS.init({
+            offset:100,
+            duration:3000,
+            easing:'ease',
+        });
+    })
     const {user,admin} =useContextBase();
     let{path,url} = useRouteMatch();
     return (
         <div>
-            <h1 className='bg-warning p-2'>Wellcome {user.displayName}, to your Dashboard</h1>
+           <div data-aos="zoom-in"> <h3 className='bg-primary p-2'>Wellcome dear {user.displayName}, to your Dashboard</h3></div>
             <Container>
                 <Row>
                     <Col className="mt-2 border" style={{borderLeft:'2px solid red'}} xs={4} md={4} lg={4}>
@@ -27,20 +36,20 @@ const DashboardHomee = () => {
                        {/* Normal USer  */}
                         {
          !admin && <>
-                        <Link to ={`${url}/paynow`}><button className="btn btn-success" style={{textDecoration:'none', width:'100%'}}  >Pay Now</button></Link>
-                        <Link to ={`${url}/review`}><button className="btn btn-warning" style={{textDecoration:'none', width:'100%'}}>Review</button></Link>
-                        <Link to ={`${url}/myorders`}><button className="btn btn-primary" style={{textDecoration:'none', width:'100%'}}>My Orders</button></Link>
+                      <div data-aos="fade-down"><Link to ={`${url}/paynow`}><button className="btn btn-success m-1" style={{textDecoration:'none', width:'100%'}}  >Pay Now</button></Link></div>
+                      <div data-aos="fade-up"><Link to ={`${url}/review`}><button className="btn btn-warning m-1" style={{textDecoration:'none', width:'100%'}}>Review</button></Link></div>
+                      <div data-aos="fade-down"><Link to ={`${url}/myorders`}><button className="btn btn-primary m-1" style={{textDecoration:'none', width:'100%'}}>My Orders</button></Link></div>
         </> }
                                 {/* Admin Panel  */}
                 {
                     admin && <>
                                 
-                        <Link to ={`${url}/manageAllOrders`}><button className="btn btn-dark" style={{textDecoration:'none', width:'100%'}}>Manage All Order</button></Link>
-                        <Link to ={`${url}/manageProducts`}><button className="btn btn-success" style={{textDecoration:'none', width:'100%'}}>Manage Products</button></Link>
-                        <Link to ={`${url}/addproduct`}><button className="btn btn-dark" style={{textDecoration:'none', width:'100%'}}>Add Products</button></Link>
-                        <Link to ={`${url}/makeAdmin`}><button className="btn btn-success" style={{textDecoration:'none', width:'100%'}}>Make Admin</button></Link>
+                        <div data-aos="fade-down"><Link to ={`${url}/manageAllOrders`}><button className="btn btn-dark m-1" style={{textDecoration:'none', width:'100%'}}>Manage All Order</button></Link></div>
+                        <div data-aos="fade-up"><Link to ={`${url}/manageProducts`}><button className="btn btn-success m-1" style={{textDecoration:'none', width:'100%'}}>Manage Products</button></Link></div>
+                        <div data-aos="fade-down"><Link to ={`${url}/addproduct`}><button className="btn btn-dark m-1" style={{textDecoration:'none', width:'100%'}}>Add Products</button></Link></div>
+                        <div data-aos="fade-up"><Link to ={`${url}/makeAdmin`}><button className="btn btn-success m-1" style={{textDecoration:'none', width:'100%'}}>Make Admin</button></Link></div>
                 </>}
-                        <Link to ='/home'><button className="btn btn-danger mt-5"style={{textDecoration:'none', width:'100%'}}>Back to Home</button></Link>
+                <div data-aos="zoom-in"><Link to ='/home'><button className="btn btn-danger mt-5"style={{textDecoration:'none', width:'100%'}}>Back to Home</button></Link></div>
                     </Col>
 
 

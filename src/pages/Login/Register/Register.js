@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { Link} from 'react-router-dom';
 import { Form,Col} from 'react-bootstrap';
 import useContextBase from './../../hooks/useContextbase';
@@ -11,6 +13,13 @@ import { MdOutlineDriveFileRenameOutline} from 'react-icons/md';
 import { GiArchiveRegister} from 'react-icons/gi';
 
 const Register = () => {
+  useEffect(()=>{
+    AOS.init({
+        offset:100,
+        duration:2000,
+        easing:'ease',
+    });
+})
     const {registerNewUSer}=useContextBase();
     const [name,setName]=useState('');
     const [email,setEmail]=useState('');
@@ -60,12 +69,12 @@ const Register = () => {
         <Header></Header>
 
             <div className="mt-5 pt-3">
-            <h3 className="text-warning fw-bold bg-dark p-2"><GiArchiveRegister/> Please Register an new account Here <GiArchiveRegister/> </h3>
+            <div data-aos="flip-down"><h3 className="text-warning fw-bold bg-dark p-2"><GiArchiveRegister/> Please Register an new account Here <GiArchiveRegister/> </h3></div>
 
             <Form onSubmit={handleRegistration} className="mt-3">
            
-            <Form.Group className="mx-auto mt-2" as={Col} md="4" lg="6" controlId="validationCustom01">
-            <Form.Label className="text-light"><MdOutlineDriveFileRenameOutline/> Enter Your Name</Form.Label>
+            <div data-aos="fade-down"><Form.Group className="mx-auto mt-2" as={Col} md="4" lg="6" controlId="validationCustom01">
+            <Form.Label className="text-dark"><MdOutlineDriveFileRenameOutline/> Enter Your Name</Form.Label>
             <Form.Control
             className="border border-warning"
             onBlur={handleNameChange}
@@ -74,8 +83,9 @@ const Register = () => {
             placeholder="Enter Your Name"
             />
             </Form.Group>
-            <Form.Group className="mx-auto mt-2" as={Col} md="4" lg="6" controlId="validationCustom01">
-            <Form.Label className="text-light"><FaUserSecret/> Enter Your Email</Form.Label>
+            </div>
+            <div data-aos="fade-down"><Form.Group className="mx-auto mt-2" as={Col} md="4" lg="6" controlId="validationCustom01">
+            <Form.Label className="text-dark"><FaUserSecret/> Enter Your Email</Form.Label>
             <Form.Control
             className="border border-warning"
             onBlur={handleEmailChange}
@@ -83,13 +93,13 @@ const Register = () => {
             type="text"
             placeholder="Enter Your Email"
             />
-            </Form.Group>
+            </Form.Group></div>
 
 
            
             
-            <Form.Group className="mx-auto mt-2" as={Col} md="6" lg="6" controlId="validationCustom03">
-            <Form.Label className="text-light"><MdPassword/>  Enter Your Password</Form.Label>
+            <div data-aos="fade-down"><Form.Group className="mx-auto mt-2" as={Col} md="6" lg="6" controlId="validationCustom03">
+            <Form.Label className="text-dark"><MdPassword/>  Enter Your Password</Form.Label>
             <Form.Control className="border border-warning" 
             onBlur={handlePasswordChange} type="password" 
             placeholder="Enter Your Password" 
@@ -97,13 +107,13 @@ const Register = () => {
             <Form.Control.Feedback  type="invalid">
             Please provide a valid password.
             </Form.Control.Feedback>
-            </Form.Group> 
+            </Form.Group> </div>
             
-            <button  className="btn btn-warning mt-2"  type="submit">Register <RiLoginCircleFill/></button>
+            <div data-aos="fade-down"><button  className="btn btn-warning mt-2"  type="submit">Register <RiLoginCircleFill/></button></div>
             </Form>
             <div className="text-warning mt-2">{error}</div>
-            <button className="btn btn-dark rounded"><Link style={{textDecoration:'none'}} className="text-warning fw-bold" to="/login"
-          ><h6>Already have account ? Please Login here</h6></Link></button>
+            <div data-aos="fade-down"><button className="btn btn-dark rounded"><Link style={{textDecoration:'none'}} className="text-warning fw-bold" to="/login"
+          ><h6>Already have account ? Please Login here</h6></Link></button></div>
             
  
         </div>

@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Spinner,Button } from 'react-bootstrap';
 import Product from '../Product/Product';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const Products = () => {
+    useEffect(()=>{
+        AOS.init({
+            offset:100,
+            duration:2000,
+            easing:'ease',
+        });
+    })
     const [products,setProducts] = useState([]);
 
     useEffect(()=>{
@@ -14,8 +22,9 @@ const Products = () => {
     },[])
     
     return (
+        
         <div id="products" className="mt-3 p-2">
-            <h5 className="bg-warning text-dark fw-bold rounded-3 m-3 p-2"> Our Top {products.length} Laptops </h5>
+           <div data-aos="zoom-in"> <h5 className="bg-warning text-dark fw-bold rounded-3 m-3 p-2"> Our Top {products.length} Laptops </h5></div>
             {
                 products.length<1? <Button variant="danger">
                 <Spinner
@@ -38,6 +47,7 @@ const Products = () => {
 </Row>
             }
         </div>
+        
     );
 };
 

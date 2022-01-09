@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { Form,Col } from 'react-bootstrap';
 import { Link,useLocation,useHistory} from 'react-router-dom';
 import Header from '../../../Shared/Header/Head';
@@ -10,6 +12,13 @@ import { RiLoginCircleFill} from 'react-icons/ri';
 import { FcGoogle} from 'react-icons/fc';
 
 const Login = () => {
+  useEffect(()=>{
+    AOS.init({
+        offset:100,
+        duration:2000,
+        easing:'ease',
+    });
+})
     const {signInWithGoogle,userLogin} =useContextBase();
     const location =useLocation();
     const history =useHistory();
@@ -71,12 +80,12 @@ const Login = () => {
         <Header></Header>
 
             <div className="mt-5 pt-3">
-            <h3 className="text-warning fw-bold bg-dark p-2"> <FaUserLock/> Please Login to Your account <FaUserLock/></h3>
+            <div data-aos="flip-down"> <h3 className="text-warning fw-bold bg-dark p-2"> <FaUserLock/> Please Login to Your account <FaUserLock/></h3></div>
 
             <Form onSubmit={handleLogin} className="mt-3">
            
-            <Form.Group className="mx-auto mt-2" as={Col} md="4" lg="6" controlId="validationCustom01">
-            <Form.Label className="text-light"><FaUserSecret/> Enter Your Email</Form.Label>
+            <div data-aos="fade-down"><Form.Group className="mx-auto mt-2" as={Col} md="4" lg="6" controlId="validationCustom01">
+            <Form.Label className="text-dark"><FaUserSecret/> Enter Your Email</Form.Label>
             <Form.Control 
             className="border border-warning"
             onBlur={handleEmailChange}
@@ -84,13 +93,13 @@ const Login = () => {
             type="text"
             placeholder="Enter Your Email"
             />
-            </Form.Group>
+            </Form.Group></div>
 
 
            
             
-            <Form.Group className="mx-auto mt-2" as={Col} md="6" lg="6" controlId="validationCustom03">
-            <Form.Label className="text-light"><MdPassword/> Enter Your Password</Form.Label>
+            <div data-aos="fade-up"><Form.Group className="mx-auto mt-2" as={Col} md="6" lg="6" controlId="validationCustom03">
+            <Form.Label className="text-dark"><MdPassword/> Enter Your Password</Form.Label>
             <Form.Control className="border border-warning" 
             onBlur={handlePasswordChange} type="password" 
             placeholder="Enter Your Password" 
@@ -98,7 +107,7 @@ const Login = () => {
             <Form.Control.Feedback  type="invalid">
             Please provide a valid password.
             </Form.Control.Feedback>
-            </Form.Group> 
+            </Form.Group></div> 
             
             <button  className="btn btn-warning mt-2"  type="submit">Login <RiLoginCircleFill/></button>
             </Form>
