@@ -24,7 +24,7 @@ const BuyNow = () => {
 
     // LOADING DATA BY ID 
     useEffect(()=>{
-      fetch('http://localhost:5000/getAddNewProduct')
+      fetch('https://rocky-mesa-18729.herokuapp.com/getAddNewProduct')
         .then(res=>res.json())
         .then(data=>setSingleProducts(data))
     },[])
@@ -50,7 +50,7 @@ e.preventDefault();
    
 
 const newPackage = {packageName,userName, email,address,date,contact,status}
-fetch('http://localhost:5000/allBookedProducts',{
+fetch('https://rocky-mesa-18729.herokuapp.com/allBookedProducts',{
   method:'POST',
   headers:{
     'content-type':'application/json'

@@ -10,7 +10,7 @@ const MyOrders = () => {
     const {user}=useContextBase();
     const [myBookings,setMyBookings] =useState([]);
     useEffect(()=>{
-        fetch(`http://localhost:5000/getBookedProduct/${user.email}`)
+        fetch(`https://rocky-mesa-18729.herokuapp.com/getBookedProduct/${user.email}`)
         .then(res=>res.json())
         .then(data=>setMyBookings(data))
     },[])
@@ -20,7 +20,7 @@ const MyOrders = () => {
       const confirmDelete =
       window.confirm('Are You Sure to delete this Package?? ')
     if(confirmDelete){
-      fetch(`http://localhost:5000/getBookedProduct${id}`,{
+      fetch(`https://rocky-mesa-18729.herokuapp.com/getBookedProduct${id}`,{
         method:'DELETE'})
 
       .then(res=>res.json())

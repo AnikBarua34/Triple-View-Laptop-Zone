@@ -12,7 +12,7 @@ const ManageAllOrder = () => {
     const [orderId,setOrderId]=useState('');
     
     useEffect(()=>{
-        fetch('http://localhost:5000/getBookedProduct')
+        fetch('https://rocky-mesa-18729.herokuapp.com/getBookedProduct')
         .then(res=>res.json())
         .then(data=>setBookedProducts(data))
     },[])
@@ -22,7 +22,7 @@ const ManageAllOrder = () => {
         const confirmDelete=window.confirm('Are you sure ? to delete this product from your booking !')
         if(confirmDelete){
             // deleting product by id
-            fetch(`http://localhost:5000/getBookedProduct${id}`,{
+            fetch(`https://rocky-mesa-18729.herokuapp.com/getBookedProduct${id}`,{
                 method:'DELETE'})
                 // regulaer process
                 .then(res=>res.json())
@@ -38,7 +38,7 @@ const ManageAllOrder = () => {
     }
     const onSubmit = (data) => {
         console.log(data, orderId);
-        fetch(`http://localhost:5000/statusUpdate/${orderId}`, {
+        fetch(`https://rocky-mesa-18729.herokuapp.com/statusUpdate/${orderId}`, {
           method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(data),

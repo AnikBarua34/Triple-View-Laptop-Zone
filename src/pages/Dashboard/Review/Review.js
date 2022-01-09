@@ -24,7 +24,7 @@ const Review = () => {
           
        
        const newReview = {userName,email, description,rating}
-       fetch('http://localhost:5000/postReview',{
+       fetch('https://rocky-mesa-18729.herokuapp.com/postReview',{
          method:'POST',
          headers:{
            'content-type':'application/json'

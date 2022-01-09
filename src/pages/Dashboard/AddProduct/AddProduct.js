@@ -22,7 +22,7 @@ const AddProduct = () => {
         
         const newProduct = {productName,price, description,img}
         
-        fetch('http://localhost:5000/postAddNewProduct',{
+        fetch('https://rocky-mesa-18729.herokuapp.com/postAddNewProduct',{
           method:'POST',
           headers:{
             'content-type':'application/json'

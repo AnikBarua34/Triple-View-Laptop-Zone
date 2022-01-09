@@ -8,7 +8,7 @@ import Rating from 'react-rating';
 const Reviews = () => {
     const [usersReview,setUsersReview] =useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/getReviews')
+        fetch('https://rocky-mesa-18729.herokuapp.com/getReviews')
         .then(res=>res.json())
         // .then(data=>console.log(data));
         .then(data=>setUsersReview(data));

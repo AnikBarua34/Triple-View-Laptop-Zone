@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 const ManageProducts = () => {
     const [allproducts,setAllProducts] =useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/getAddNewProduct')
+        fetch('https://rocky-mesa-18729.herokuapp.com/getAddNewProduct')
         .then(res=>res.json())
         .then(data=>setAllProducts(data))
     },[])
@@ -20,7 +20,7 @@ const ManageProducts = () => {
         const confirmDelete=window.confirm('Are you sure ? to delete this product from your booking !')
         if(confirmDelete){
             // deleting product by id
-            fetch(`http://localhost:5000/getAddNewProduct${id}`,{
+            fetch(`https://rocky-mesa-18729.herokuapp.com/getAddNewProduct${id}`,{
                 method:'DELETE'})
                 // regulaer process
                 .then(res=>res.json())

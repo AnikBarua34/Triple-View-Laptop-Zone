@@ -7,7 +7,7 @@ const Products = () => {
 
     useEffect(()=>{
         // fetch('https://fakestoreapi.com/products')
-        fetch('http://localhost:5000/getAddNewProduct')
+        fetch('https://rocky-mesa-18729.herokuapp.com/getAddNewProduct')
         
         .then(res=>res.json())
         .then(data=> setProducts(data.slice(0,6)))
