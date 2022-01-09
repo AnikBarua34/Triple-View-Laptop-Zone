@@ -14,7 +14,7 @@ const MoreProduct = ({product}) => {
         <div className="product-container">
         
         <Col className="card-body">
-  <Card className="card" border="warning"> 
+  <Card style={{height:"540px"}} className="card" border="warning"> 
     <Card.Img variant="top" src={img} />
     <Card.Body>
       <Card.Title className="text-primary fw-bold">Name : {productName}</Card.Title>
